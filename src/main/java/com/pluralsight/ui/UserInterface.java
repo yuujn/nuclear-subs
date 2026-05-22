@@ -2,6 +2,10 @@ package com.pluralsight.ui;
 
 public class UserInterface {
     public void run() {
-        System.out.println("Hello, world.");
+        Screen currentScreen = new HomeScreen();
+
+        while (currentScreen != null) {
+            currentScreen = currentScreen.run();
+        }
     }
 }
