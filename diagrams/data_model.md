@@ -1,3 +1,5 @@
+## Orders
+
 ```mermaid
 classDiagram
     class Order {
@@ -30,5 +32,14 @@ classDiagram
     LineItem <|-- Chips
     class Chips {
         
+    }
+```
+
+## Data Files
+```mermaid
+classDiagram
+    class ReceiptWriter {
+        -String receiptsDirectory
+        +void writeOrder(LocalDate moment, Order order)
     }
 ```
