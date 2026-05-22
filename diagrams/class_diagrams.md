@@ -14,7 +14,8 @@ classDiagram
     
     LineItem <|-- Sandwich
     class Sandwich {
-        -List&lt;Addition&gt; addition
+        -int size;
+        -List&lt;Addition&gt; additions
         -boolean toasted
         -@Nullable String name
     }

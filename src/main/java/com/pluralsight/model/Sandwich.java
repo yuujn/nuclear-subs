@@ -1,0 +1,45 @@
+package com.pluralsight.model;
+
+
+import java.util.List;
+
+public class Sandwich implements LineItem {
+    public static final int SMALL = 0;
+    public static final int MEDIUM = 1;
+    public static final int LARGE = 2;
+
+    private int size;
+    private List<Addition> additions;
+    private boolean toasted;
+    private String name;
+
+    public Sandwich(int size, List<Addition> additions, boolean toasted, String name) {
+        this.size = size;
+        this.additions = additions;
+        this.toasted = toasted;
+        this.name = name;
+    }
+
+    @Override
+    public double getPrice() {
+        double basePrice = switch (size) {
+            case SMALL -> 5.50;
+            case MEDIUM -> 7.00;
+            case LARGE -> 8.50;
+            default -> throw new RuntimeException("Unknown sandwich size");
+        };
+        return basePrice + additions.stream()
+                .mapToDouble(x -> x.computePrice(size))
+                .sum();
+    }
+
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "size=" + size +
+                ", additions=" + additions +
+                ", toasted=" + toasted +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
