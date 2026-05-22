@@ -5,6 +5,7 @@ classDiagram
     class Order {
         -List&lt;LineItem&gt; items
         +double calculateTotal()
+        +void addItem(LineItem item)
     }
     class LineItem {
         <<interface>>
