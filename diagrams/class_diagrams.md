@@ -50,7 +50,7 @@ classDiagram
     class UserInterface
     class Screen {
         <<interface>>
-        Screen run()
+        Screen run(Scanner userInput)
     }
     
     Screen <|-- HomeScreen
