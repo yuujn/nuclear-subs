@@ -1,0 +1,36 @@
+id|category-id|name
+0|0|white
+1|0|wheat
+2|0|rye
+3|0|wrap
+
+4|1|steak
+5|1|ham
+6|1|salami
+7|1|roast beef
+8|1|chicken
+9|1|bacon
+
+10|2|american
+11|2|provolone
+12|2|cheddar
+13|2|swiss
+
+14|3|lettuce
+15|3|peppers
+16|3|onions
+17|3|tomatoes
+18|3|jalapeños
+19|3|cucumbers
+20|3|pickles
+21|3|guacamole
+22|3|mushrooms
+
+23|4|mayo
+24|4|mustard
+25|4|ketchup
+26|4|thousand island
+27|4|vinaigrette
+
+28|5|au jus
+29|5|sauce

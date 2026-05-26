@@ -11,10 +11,16 @@ classDiagram
         <<interface>>
         +double getPrice()
     }
-    
+
+    class Size {
+        -int id
+        -String name
+        -String measurement
+    }
+
     LineItem <|-- Sandwich
     class Sandwich {
-        -int size;
+        -Size size;
         -List&lt;Addition&gt; additions
         -boolean toasted
         -@Nullable String name
@@ -43,6 +49,30 @@ classDiagram
     class ReceiptWriter {
         -String receiptsDirectory
         +void writeOrder(LocalDate moment, Order order)
+    }
+    class SandwichDataReader {
+        +List&lt;Size&gt; getSizes()
+        
+        +List&lt;Addition&gt; getAdditions()
+    }
+```
+
+### Private Data Reader Classes
+The following classes are not usable outside of `com.pluralsight.data`.
+They are relevant only to the internals around reading and writing
+the files we're working with.
+```mermaid
+classDiagram
+    class SandwichAdditionCategory {
+        -int id
+        -String name
+        -List&lt;Double&gt; pricesBySize
+        -@Nullable List&lt;Double&gt; extraPricesBySize
+    }
+    class SandwichAddition {
+        -int id
+        -int categoryId
+        -String name
     }
 ```
 
