@@ -5,6 +5,7 @@ public class Size {
     private String name;
     private String measurement;
 
+    private Size() {}
     public Size(int id, String name, String measurement) {
         this.id = id;
         this.name = name;
@@ -33,5 +34,18 @@ public class Size {
 
     public void setMeasurement(String measurement) {
         this.measurement = measurement;
+    }
+
+    public static Size fromCSVRow(String[] fieldMap, String[] fields) {
+        Size size = new Size();
+        for (int i = 0; i < fields.length; i++) {
+            String field = fields[i];
+            switch (fieldMap[i].toLowerCase()) {
+                case "id" -> size.setId(Integer.parseInt(field));
+                case "name" -> size.setName(field);
+                case "measurement" -> size.setMeasurement(field);
+            }
+        }
+        return size;
     }
 }

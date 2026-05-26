@@ -60,7 +60,7 @@ classDiagram
     class SandwichDataReader {
         +List&lt;Size&gt; getSizes()
         
-        +List&lt;Addition&gt; getAdditions()
+        +List&lt;MenuAddition&gt; getAdditions()
     }
 ```
 

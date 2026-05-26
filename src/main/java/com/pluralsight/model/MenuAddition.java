@@ -15,7 +15,6 @@ public class MenuAddition {
         return total;
     }
 
-    public MenuAddition() {}
     public MenuAddition(String name, String category, double[] pricePerSizeClass, double[] extraPricePerSizeClass, boolean premium) {
         this.name = name;
         this.category = category;
