@@ -95,20 +95,6 @@ public class AddSandwichScreen implements Screen {
                 }
             }
         }
-
-        int bread = promptInt(userInput, "Choose: ");
-        switch (bread) {
-            case 0 -> {
-                return new OrderScreen(order);
-            }
-            case 1, 2, 3, 4 -> {
-            }
-            default -> {
-                throw new RuntimeException("TODO");
-            }
-        }
-        ;
-        String size = promptLine(userInput, "Sandwich Size: ");
         return new OrderScreen(order);
     }
 
@@ -131,16 +117,6 @@ public class AddSandwichScreen implements Screen {
         }
     }
 
-    void displayBreads() {
-        System.out.println("# Bread");
-        System.out.println("-------");
-        System.out.println("1) White");
-        System.out.println("2) Wheat");
-        System.out.println("3) Rye");
-        System.out.println("4) Wrap");
-//        System.out.println("0) Cancel Sandwich");
-    }
-
     void displaySizes() {
         System.out.println("# Size");
         System.out.println("--------");
@@ -149,29 +125,5 @@ public class AddSandwichScreen implements Screen {
             Size size = sizes.get(i);
             System.out.printf("%d) %s (%s)%n", i + 1, titleCase(size.getName()), size.getMeasurement());
         }
-    }
-
-    void displayMeats() {
-        System.out.println("1) Steak");
-        System.out.println("2) Ham");
-        System.out.println("3) Salami");
-        System.out.println("4) Roast Beef");
-        System.out.println("5) Chicken");
-        System.out.println("6) Bacon");
-    }
-
-    // TODO: Do you want extra meat?
-    void displayCheeses() {
-        System.out.println("1) American");
-        System.out.println("2) Provolone");
-        System.out.println("3) Cheddar");
-        System.out.println("4) Swiss");
-    }
-
-    // TODO: Do you want extra cheese?
-    void displayRegularToppings() {
-        System.out.println("1) Lettuce");
-        System.out.println("2) Peppers");
-        System.out.println("3) ");
     }
 }
