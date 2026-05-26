@@ -25,11 +25,17 @@ classDiagram
         -boolean toasted
         -@Nullable String name
     }
-    class Addition {
+    class MenuAddition {
         -String name
         -String category
         -double[] pricePerSizeClass
+        -double[] extraPricePerSizeClass
         -boolean premium
+        +computePrice(int size, boolean wantsExtra)
+    }
+    class Addition {
+        -MenuAddition menuAddition
+        -boolean wantsExtra
         +computePrice(int size)
     }
     
@@ -67,8 +73,8 @@ classDiagram
     class SandwichAdditionCategory {
         -int id
         -String name
-        -List&lt;Double&gt; pricesBySize
-        -@Nullable List&lt;Double&gt; extraPricesBySize
+        -double[] pricesBySize
+        -@Nullable double[]; extraPricesBySize
     }
     class SandwichAddition {
         -int id
