@@ -12,4 +12,29 @@ public interface Screen {
         System.out.print(prompt);
         return userInput.nextLine();
     }
+
+    default int promptInt(Scanner userInput, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                return Integer.parseInt(userInput.nextLine());
+            } catch (NumberFormatException ignored) {
+                System.out.println("Please enter a number.");
+            }
+        }
+    }
+
+    default int promptPositiveInt(Scanner userInput, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int number = Integer.parseInt(userInput.nextLine());
+                if (number >= 0) {
+                    return number;
+                }
+            } catch (NumberFormatException ignored) {
+            }
+            System.out.println("Please enter a positive number.");
+        }
+    }
 }
