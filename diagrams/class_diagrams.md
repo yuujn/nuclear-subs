@@ -58,15 +58,25 @@ classDiagram
     Screen <|-- HomeScreen
     class HomeScreen
     Screen <|-- OrderScreen
-    class OrderScreen
+    class OrderScreen {
+        -Order order
+    }
     Screen <|-- AddSandwichScreen
-    class AddSandwichScreen
+    class AddSandwichScreen {
+        -Order order
+    }
     Screen <|-- AddDrinkScreen
-    class AddDrinkScreen
+    class AddDrinkScreen {
+        -Order order
+    }
     Screen <|-- AddChipsScreen
-    class AddChipsScreen
+    class AddChipsScreen {
+        -Order order
+    }
     Screen <|-- CheckoutScreen
-    class CheckoutScreen
+    class CheckoutScreen {
+        -Order order
+    }
 ```
 
 For fun, we're structuring the UI flow around classes whose `run()` method
