@@ -63,24 +63,24 @@ public class SandwichDataReader {
         String[] additionFileHeader = bufAdditionsReader.readLine().split("\\|");
         while ((line = bufAdditionsReader.readLine()) != null) {
             if (line.isBlank()) { continue; }
-            SandwichAddition addition = SandwichAddition.fromCSVRow(additionFileHeader, line.split("\\|"));
-            SandwichAdditionCategory category = categories.get(addition.getCategoryId());
-            boolean premium = category.getExtraPricesBySize() != null;
+            SandwichAddition fileAddition = SandwichAddition.fromCSVRow(additionFileHeader, line.split("\\|"));
+            SandwichAdditionCategory fileCategory = categories.get(fileAddition.getCategoryId());
+            MenuAdditionCategory menuCategory = data.categories.stream()
+                    .filter(x -> x.getId() == fileAddition.getCategoryId())
+                    .findFirst()
+                    .orElseThrow();
+
+            boolean premium = fileCategory.getExtraPricesBySize() != null;
             MenuAddition menuAddition = new MenuAddition(
-                    addition.getName(),
-                    category.getName(),
-                    category.getPricesBySize(),
-                    category.getExtraPricesBySize(),
+                    fileAddition.getName(),
+                    menuCategory,
+                    fileCategory.getPricesBySize(),
+                    fileCategory.getExtraPricesBySize(),
                     premium
             );
             data.additions.add(menuAddition);
 
-            data.categories.stream()
-                    .filter(x -> x.getId() == addition.getCategoryId())
-                    .findFirst()
-                    .orElseThrow()
-                    .getAdditions()
-                    .add(menuAddition);
+            menuCategory.getAdditions().add(menuAddition);
         }
 
         return data;
