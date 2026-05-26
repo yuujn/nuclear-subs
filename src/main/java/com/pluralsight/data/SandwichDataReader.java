@@ -1,6 +1,6 @@
 package com.pluralsight.data;
 
-import com.pluralsight.model.AdditionCategory;
+import com.pluralsight.model.MenuAdditionCategory;
 import com.pluralsight.model.MenuAddition;
 import com.pluralsight.model.Size;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SandwichDataReader {
     private List<Size> sizes;
-    private List<AdditionCategory> categories;
+    private List<MenuAdditionCategory> categories;
     private List<MenuAddition> additions;
 
     private SandwichDataReader() {
@@ -50,7 +50,7 @@ public class SandwichDataReader {
             SandwichAdditionCategory fileCategory = SandwichAdditionCategory.fromCSVRow(additionCategoriesFileHeader, line.split("\\|"));
             categories.add(fileCategory);
 
-            AdditionCategory category = new AdditionCategory(
+            MenuAdditionCategory category = new MenuAdditionCategory(
                     fileCategory.getId(),
                     fileCategory.getName(),
                     new ArrayList<>(),
@@ -90,7 +90,7 @@ public class SandwichDataReader {
         return sizes;
     }
 
-    public List<AdditionCategory> getCategories() {
+    public List<MenuAdditionCategory> getCategories() {
         return categories;
     }
 

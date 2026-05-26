@@ -2,7 +2,7 @@ package com.pluralsight.model;
 
 import java.util.List;
 
-public class AdditionCategory {
+public class MenuAdditionCategory {
     private int id;
     private String name;
     private List<MenuAddition> additions;
@@ -12,7 +12,7 @@ public class AdditionCategory {
     // it is explicitly about the category of thing we're talking about.
     private boolean canMany;
 
-    public AdditionCategory(int id, String name, List<MenuAddition> additions, boolean canMany) {
+    public MenuAdditionCategory(int id, String name, List<MenuAddition> additions, boolean canMany) {
         this.id = id;
         this.name = name;
         this.additions = additions;

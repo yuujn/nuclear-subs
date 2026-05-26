@@ -25,7 +25,7 @@ classDiagram
         -boolean toasted
         -@Nullable String name
     }
-    class AdditionCategory {
+    class MenuAdditionCategory {
         -int id
         -String name
         -List&lt;MenuAddition&gt; additions
