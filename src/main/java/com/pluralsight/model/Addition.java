@@ -1,7 +1,7 @@
 package com.pluralsight.model;
 
 public class Addition {
-    MenuAddition menuAddition;
+    private MenuAddition menuAddition;
     // These fields are customer input, for the particular order.
     private boolean wantsExtra;
     double computePrice(int size) {
