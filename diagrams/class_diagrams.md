@@ -76,6 +76,7 @@ classDiagram
         -double[] pricesBySize
         -@Nullable double[]; extraPricesBySize
         -boolean canExtra
+        -boolean canMany
     }
     class SandwichAddition {
         -int id
