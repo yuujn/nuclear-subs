@@ -21,9 +21,13 @@ classDiagram
     LineItem <|-- Sandwich
     class Sandwich {
         -Size size;
-        -List&lt;Addition&gt; additions
+        -List&lt;AdditionCategory&gt; category
         -boolean toasted
         -@Nullable String name
+    }
+    class AdditionCategory {
+        -MenuAdditionCategory menuAdditionCategory
+        -List&lt;Addition&gt; additions
     }
     class MenuAdditionCategory {
         -int id
