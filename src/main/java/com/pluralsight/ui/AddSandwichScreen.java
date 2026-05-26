@@ -18,6 +18,19 @@ public class AddSandwichScreen implements Screen {
     @Override
     public Screen run(Scanner userInput) {
         Sandwich sandwich = new Sandwich();
+
+        // TODO: since we need to do retries with this and handle Go back with it,
+        //       there isn't any reason not to put it in the loop below
+        List<Size> sizes = App.data.getSizes();
+        displaySizes();
+        System.out.println("0) Cancel sandwich");
+        int sizeChoice = promptInt(userInput, "Choose: ");
+
+        // UI Steps:
+        // 1     : Size
+        // 2..N  : Category[N - 1]
+        // N + 1 : Would you like the sandwich toasted?
+
         // Loop over every category of sandwich component
         //   Each component category is one of:
         //    - Exactly 1 (no extra) | Bread
@@ -40,6 +53,8 @@ public class AddSandwichScreen implements Screen {
                 System.out.println("b) Go back");
             }
             if (category.isCanMany()) {
+                // NON-PRIORITY TODO: Add "Remove component" option
+//                System.out.printf("r) Remove c");
                 System.out.printf("d) Done adding from %s%n", titleCase(category.getName()));
             }
             System.out.println("0) Cancel Sandwich");
@@ -127,12 +142,13 @@ public class AddSandwichScreen implements Screen {
     }
 
     void displaySizes() {
-        System.out.println("# Sandwich Size");
-        System.out.println("1) 4\"");
-        System.out.println("2) 8\"");
-        System.out.println("3) 12\"");
-//        System.out.println("b) Go Back");
-//        System.out.println("0) Cancel Sandwich");
+        System.out.println("# Size");
+        System.out.println("--------");
+        List<Size> sizes = App.data.getSizes();
+        for (int i = 0; i < sizes.size(); i++) {
+            Size size = sizes.get(i);
+            System.out.printf("%d) %s (%s)%n", i + 1, titleCase(size.getName()), size.getMeasurement());
+        }
     }
 
     void displayMeats() {
