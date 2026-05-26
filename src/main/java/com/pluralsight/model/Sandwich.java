@@ -3,6 +3,7 @@ package com.pluralsight.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Sandwich implements LineItem {
     private int size;
@@ -66,11 +67,16 @@ public class Sandwich implements LineItem {
 
     public void addComponent(Addition addition) {
         MenuAdditionCategory target = addition.getMenuAddition().getCategory();
-        categories.stream()
+        Optional<AdditionCategory> category = categories.stream()
                 .filter(x -> x.getMenuAdditionCategory() == target)
-                .findFirst()
-                .orElseThrow()
-                .getAdditions()
-                .add(addition);
+                .findFirst();
+
+        if (category.isPresent()) {
+            category.get().getAdditions().add(addition);
+        } else {
+            AdditionCategory newCategory = new AdditionCategory(target);
+            newCategory.getAdditions().add(addition);
+            categories.add(newCategory);
+        }
     }
 }
