@@ -2,13 +2,13 @@ package com.pluralsight.data;
 
 class SandwichAddition {
     private int id;
-    private int categoryid;
+    private int categoryId;
     private String name;
 
     private SandwichAddition() {}
-    public SandwichAddition(int id, int categoryid, String name) {
+    public SandwichAddition(int id, int categoryId, String name) {
         this.id = id;
-        this.categoryid = categoryid;
+        this.categoryId = categoryId;
         this.name = name;
     }
 
@@ -20,12 +20,12 @@ class SandwichAddition {
         this.id = id;
     }
 
-    public int getCategoryid() {
-        return categoryid;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryid(int categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -42,7 +42,7 @@ class SandwichAddition {
             String field = fields[i];
             switch (fieldMap[i].toLowerCase()) {
                 case "id" -> addition.setId(Integer.parseInt(field));
-                case "category-id" -> addition.setCategoryid(Integer.parseInt(field));
+                case "category-id" -> addition.setCategoryId(Integer.parseInt(field));
                 case "name" -> addition.setName(field);
             }
         }
