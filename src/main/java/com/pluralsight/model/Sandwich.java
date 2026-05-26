@@ -63,4 +63,14 @@ public class Sandwich implements LineItem {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void addComponent(Addition addition) {
+        MenuAdditionCategory target = addition.getMenuAddition().getCategory();
+        categories.stream()
+                .filter(x -> x.getMenuAdditionCategory() == target)
+                .findFirst()
+                .orElseThrow()
+                .getAdditions()
+                .add(addition);
+    }
 }
