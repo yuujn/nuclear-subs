@@ -95,6 +95,8 @@ public class AddSandwichScreen implements Screen {
                 }
             }
         }
+
+        order.addItem(sandwich);
         return new OrderScreen(order);
     }
 
