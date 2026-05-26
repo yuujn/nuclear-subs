@@ -35,11 +35,12 @@ classDiagram
     
     LineItem <|-- Drink
     class Drink {
-        -int size
+        -String size
+        -String flavor
     }
     LineItem <|-- Chips
     class Chips {
-        
+        -String type
     }
 ```
 
