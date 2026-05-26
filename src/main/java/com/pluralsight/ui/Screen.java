@@ -37,4 +37,9 @@ public interface Screen {
             System.out.println("Please enter a positive number.");
         }
     }
+
+    default void waitForEnter(Scanner userInput, String notice) {
+        System.out.println(notice);
+        String ignored = userInput.nextLine();
+    }
 }
