@@ -7,6 +7,7 @@ class SandwichAdditionCategory {
     private String name;
     private double[] pricesBySize;
     private double[] extraPricesBySize;
+    private boolean canExtra;
 
     private SandwichAdditionCategory() {
     }
@@ -50,6 +51,14 @@ class SandwichAdditionCategory {
         this.extraPricesBySize = extraPricesBySize;
     }
 
+    public boolean isCanExtra() {
+        return canExtra;
+    }
+
+    public void setCanExtra(boolean canExtra) {
+        this.canExtra = canExtra;
+    }
+
     public static SandwichAdditionCategory fromCSVRow(String[] fieldMap, String[] fields) {
         SandwichAdditionCategory category = new SandwichAdditionCategory();
         for (int i = 0; i < fields.length; i++) {
@@ -70,6 +79,7 @@ class SandwichAdditionCategory {
                         );
                     }
                 }
+                case "can-extra" -> category.setCanExtra(Boolean.parseBoolean(field));
             }
         }
         return category;
