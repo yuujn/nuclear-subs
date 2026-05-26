@@ -1,5 +1,6 @@
 package com.pluralsight.data;
 
+import com.pluralsight.model.AdditionCategory;
 import com.pluralsight.model.MenuAddition;
 import com.pluralsight.model.Size;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class SandwichDataReader {
     private List<Size> sizes;
+    private List<AdditionCategory> categories;
     private List<MenuAddition> additions;
 
     private SandwichDataReader() {
@@ -41,10 +43,20 @@ public class SandwichDataReader {
         }
 
         List<SandwichAdditionCategory> categories = new ArrayList<>();
+        data.categories = new ArrayList<>();
         String[] additionCategoriesFileHeader = bufAdditionCategoriesReader.readLine().split("\\|");
         while ((line = bufAdditionCategoriesReader.readLine()) != null) {
             if (line.isBlank()) { continue; }
-            categories.add(SandwichAdditionCategory.fromCSVRow(additionCategoriesFileHeader, line.split("\\|")));
+            SandwichAdditionCategory fileCategory = SandwichAdditionCategory.fromCSVRow(additionCategoriesFileHeader, line.split("\\|"));
+            categories.add(fileCategory);
+
+            AdditionCategory category = new AdditionCategory(
+                    fileCategory.getId(),
+                    fileCategory.getName(),
+                    new ArrayList<>(),
+                    fileCategory.isCanMany()
+            );
+            data.categories.add(category);
         }
 
         data.additions = new ArrayList<>();
@@ -52,15 +64,23 @@ public class SandwichDataReader {
         while ((line = bufAdditionsReader.readLine()) != null) {
             if (line.isBlank()) { continue; }
             SandwichAddition addition = SandwichAddition.fromCSVRow(additionFileHeader, line.split("\\|"));
-            SandwichAdditionCategory category = categories.get(addition.getCategoryid());
+            SandwichAdditionCategory category = categories.get(addition.getCategoryId());
             boolean premium = category.getExtraPricesBySize() != null;
-            data.additions.add(new MenuAddition(
+            MenuAddition menuAddition = new MenuAddition(
                     addition.getName(),
                     category.getName(),
                     category.getPricesBySize(),
                     category.getExtraPricesBySize(),
                     premium
-            ));
+            );
+            data.additions.add(menuAddition);
+
+            data.categories.stream()
+                    .filter(x -> x.getId() == addition.getCategoryId())
+                    .findFirst()
+                    .orElseThrow()
+                    .getAdditions()
+                    .add(menuAddition);
         }
 
         return data;
@@ -68,6 +88,10 @@ public class SandwichDataReader {
 
     public List<Size> getSizes() {
         return sizes;
+    }
+
+    public List<AdditionCategory> getCategories() {
+        return categories;
     }
 
     public List<MenuAddition> getAdditions() {
