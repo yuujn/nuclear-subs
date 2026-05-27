@@ -3,6 +3,8 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pluralsight.ui.StringUtil.titleCase;
+
 public class Order {
     private List<LineItem> items;
 
@@ -30,7 +32,7 @@ public class Order {
         buf.append("\n");
 
         for (LineItem item : getItems()) {
-            buf.append(String.format("%s    .......    $%.2f", item.getName(), item.getPrice()));
+            buf.append(String.format("%s    .......    $%.2f", titleCase(item.getName()), item.getPrice()));
             if (item instanceof Sandwich sandwich) {
                 Addition[] components = sandwich.getCategories().stream()
                         .flatMap(x -> x.getAdditions().stream())
@@ -39,7 +41,7 @@ public class Order {
                     buf.append("\n");
                     buf.append(String.format(
                             "   %s ...    $%.2f",
-                            component.getMenuAddition().getName(),
+                            titleCase(component.getMenuAddition().getName()),
                             component.computePrice(sandwich.getSize())
                     ));
                 }
