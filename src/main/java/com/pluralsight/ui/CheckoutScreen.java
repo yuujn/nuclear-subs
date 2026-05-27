@@ -48,4 +48,8 @@ public class CheckoutScreen implements Screen {
         System.out.println("1) Confirm");
         System.out.println("0) Cancel");
     }
+
+    static boolean isAvailable(Order order) {
+        return order.calculateTotal() != 0;
+    }
 }

@@ -34,8 +34,9 @@ public class OrderScreen implements Screen {
         System.out.println("1) Add Sandwich");
         System.out.println("2) Add Drink");
         System.out.println("3) Add Chips");
-        // TODO: only show or accept this when it's really an option
-        System.out.println("4) Checkout");
+        if (CheckoutScreen.isAvailable(order)) {
+            System.out.println("4) Checkout");
+        }
         System.out.println("0) Cancel Order");
     }
 }
