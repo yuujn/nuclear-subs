@@ -24,6 +24,7 @@ public interface Screen {
         }
     }
 
+    @SuppressWarnings("unused")
     default int promptPositiveInt(Scanner userInput, String prompt) {
         while (true) {
             System.out.print(prompt);

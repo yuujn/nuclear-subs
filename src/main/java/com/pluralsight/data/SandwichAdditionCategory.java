@@ -13,13 +13,6 @@ class SandwichAdditionCategory {
     private SandwichAdditionCategory() {
     }
 
-    public SandwichAdditionCategory(int id, String name, double[] pricesBySize, double[] extraPricesBySize) {
-        this.id = id;
-        this.name = name;
-        this.pricesBySize = pricesBySize;
-        this.extraPricesBySize = extraPricesBySize;
-    }
-
     public int getId() {
         return id;
     }

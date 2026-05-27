@@ -17,10 +17,12 @@ public class Drink implements LineItem {
         this.size = size;
     }
 
+    @SuppressWarnings("unused")
     public String getFlavor() {
         return flavor;
     }
 
+    @SuppressWarnings("unused")
     public void setFlavor(String flavor) {
         this.flavor = flavor;
     }

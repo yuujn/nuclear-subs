@@ -15,7 +15,7 @@ public class HomeScreen implements Screen {
                 case "1" -> { return new OrderScreen(new Order()); }
                 case "0" -> { return null; }
                 default -> {}
-            };
+            }
         }
     }
 

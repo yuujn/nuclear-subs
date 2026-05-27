@@ -17,6 +17,7 @@ public class Addition {
         return menuAddition;
     }
 
+    @SuppressWarnings("unused")
     public void setMenuAddition(MenuAddition menuAddition) {
         this.menuAddition = menuAddition;
     }
@@ -25,6 +26,7 @@ public class Addition {
         return wantsExtra;
     }
 
+    @SuppressWarnings("unused")
     public void setWantsExtra(boolean wantsExtra) {
         this.wantsExtra = wantsExtra;
     }

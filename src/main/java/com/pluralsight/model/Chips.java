@@ -7,10 +7,12 @@ public class Chips implements LineItem {
         this.type = type;
     }
 
+    @SuppressWarnings("unused")
     public String getType() {
         return type;
     }
 
+    @SuppressWarnings("unused")
     public void setType(String type) {
         this.type = type;
     }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 import static com.pluralsight.ui.StringUtil.titleCase;
 
 public class AddSandwichScreen implements Screen {
-    private Order order;
+    private final Order order;
 
     public AddSandwichScreen(Order order) {
         this.order = order;
@@ -187,9 +187,7 @@ public class AddSandwichScreen implements Screen {
     }
 
     void horizontalRule(StringBuilder buf, int length) {
-        for (int i = 0; i < length; i++) {
-            buf.append("-");
-        }
+        buf.append("-".repeat(Math.max(0, length)));
     }
 
     void displayCategory(MenuAdditionCategory category) {

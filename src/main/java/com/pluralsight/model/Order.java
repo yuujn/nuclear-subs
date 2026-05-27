@@ -1,13 +1,12 @@
 package com.pluralsight.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.pluralsight.ui.StringUtil.titleCase;
 
 public class Order {
-    private List<LineItem> items;
+    private final List<LineItem> items;
 
     public Order() {
         this.items = new ArrayList<>();

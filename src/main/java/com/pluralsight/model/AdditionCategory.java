@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdditionCategory {
-    private MenuAdditionCategory menuAdditionCategory;
-    private List<Addition> additions;
+    private final MenuAdditionCategory menuAdditionCategory;
+    private final List<Addition> additions;
 
     public AdditionCategory(MenuAdditionCategory menuAdditionCategory) {
         this.menuAdditionCategory = menuAdditionCategory;

@@ -13,7 +13,7 @@ public class StringUtil {
                 buf.append(c);
             }
 
-            // Setup the next codepoint.
+            // Set up the next codepoint.
             isFirstLetterOfWord = Character.isWhitespace(c) || c == '(' || c == ')';
         }
         return buf.toString();

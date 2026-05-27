@@ -1,9 +1,6 @@
 package com.pluralsight.data;
 
-import com.pluralsight.model.Addition;
-import com.pluralsight.model.LineItem;
 import com.pluralsight.model.Order;
-import com.pluralsight.model.Sandwich;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -12,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ReceiptWriter {
-    private String receiptsDirectory;
+    private final String receiptsDirectory;
 
     public ReceiptWriter(String receiptsDirectory) {
         this.receiptsDirectory = receiptsDirectory;

@@ -29,6 +29,7 @@ public class MenuAddition {
         return name;
     }
 
+    @SuppressWarnings("unused")
     public void setName(String name) {
         this.name = name;
     }
@@ -37,30 +38,37 @@ public class MenuAddition {
         return category;
     }
 
+    @SuppressWarnings("unused")
     public void setCategory(MenuAdditionCategory category) {
         this.category = category;
     }
 
+    @SuppressWarnings("unused")
     public double[] getPricePerSizeClass() {
         return pricePerSizeClass;
     }
 
+    @SuppressWarnings("unused")
     public void setPricePerSizeClass(double[] pricePerSizeClass) {
         this.pricePerSizeClass = pricePerSizeClass;
     }
 
+    @SuppressWarnings("unused")
     public double[] getExtraPricePerSizeClass() {
         return extraPricePerSizeClass;
     }
 
+    @SuppressWarnings("unused")
     public void setExtraPricePerSizeClass(double[] extraPricePerSizeClass) {
         this.extraPricePerSizeClass = extraPricePerSizeClass;
     }
 
+    @SuppressWarnings("unused")
     public boolean isPremium() {
         return premium;
     }
 
+    @SuppressWarnings("unused")
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
@@ -69,6 +77,7 @@ public class MenuAddition {
         return canExtra;
     }
 
+    @SuppressWarnings("unused")
     public void setCanExtra(boolean canExtra) {
         this.canExtra = canExtra;
     }

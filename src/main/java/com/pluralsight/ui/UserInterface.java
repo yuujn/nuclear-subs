@@ -3,7 +3,7 @@ package com.pluralsight.ui;
 import java.util.Scanner;
 
 public class UserInterface {
-    private Scanner scan;
+    private final Scanner scan;
     public UserInterface(Scanner scan) {
         this.scan = scan;
     }

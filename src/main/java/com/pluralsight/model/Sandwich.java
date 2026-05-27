@@ -3,6 +3,7 @@ package com.pluralsight.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.pluralsight.ui.StringUtil.titleCase;
@@ -52,10 +53,12 @@ public class Sandwich implements LineItem {
         return categories;
     }
 
+    @SuppressWarnings("unused")
     public void setCategories(List<AdditionCategory> categories) {
         this.categories = categories;
     }
 
+    @SuppressWarnings("unused")
     public boolean isToasted() {
         return toasted;
     }
@@ -65,13 +68,10 @@ public class Sandwich implements LineItem {
     }
 
     public String getName() {
-        if (name != null) {
-            return name;
-        } else {
-            return "Sandwich";
-        }
+        return Objects.requireNonNullElse(name, "Sandwich");
     }
 
+    @SuppressWarnings("unused")
     public void setName(String name) {
         this.name = name;
     }

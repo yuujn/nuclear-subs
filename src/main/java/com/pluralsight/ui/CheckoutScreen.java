@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class CheckoutScreen implements Screen {
-    private Order order;
+    private final Order order;
     public CheckoutScreen(Order order) {
         this.order = order;
     }
@@ -30,7 +30,7 @@ public class CheckoutScreen implements Screen {
                         return new HomeScreen();
                     } catch (IOException e) {
                         System.out.println("Failed to write receipt.");
-                        System.out.println("Error: " + e.toString());
+                        System.out.println("Error: " + e);
                         System.out.println("Returning to prompt. You may attempt to resolve the issue before trying again.");
                     }
                 }

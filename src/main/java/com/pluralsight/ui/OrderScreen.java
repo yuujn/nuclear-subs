@@ -5,7 +5,7 @@ import com.pluralsight.model.Order;
 import java.util.Scanner;
 
 public class OrderScreen implements Screen {
-    private Order order;
+    private final Order order;
     // To avoid accidents, constructing an OrderScreen
     // always requires specifying what Order it is working
     // with.

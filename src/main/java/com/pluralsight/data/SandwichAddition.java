@@ -6,12 +6,8 @@ class SandwichAddition {
     private String name;
 
     private SandwichAddition() {}
-    public SandwichAddition(int id, int categoryId, String name) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.name = name;
-    }
 
+    @SuppressWarnings("unused")
     public int getId() {
         return id;
     }

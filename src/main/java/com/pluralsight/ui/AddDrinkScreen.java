@@ -6,7 +6,7 @@ import com.pluralsight.model.Order;
 import java.util.Scanner;
 
 public class AddDrinkScreen implements Screen {
-    private Order order;
+    private final Order order;
     public AddDrinkScreen(Order order) {
         this.order = order;
     }

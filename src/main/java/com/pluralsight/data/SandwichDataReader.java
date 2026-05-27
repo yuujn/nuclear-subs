@@ -95,6 +95,7 @@ public class SandwichDataReader {
         return categories;
     }
 
+    @SuppressWarnings("unused")
     public List<MenuAddition> getAdditions() {
         return additions;
     }
