@@ -92,19 +92,25 @@ public class AddSandwichScreen implements Screen {
                     return new OrderScreen(order);
                 } else if (n > 0 && n < category.getAdditions().size()) {
                     MenuAddition selection = category.getAdditions().get(n);
-                    // TODO: prompt about wanting extra
-                    sandwich.addComponent(new Addition(selection, false));
-                    cursor += 1;
+                    boolean wantsExtra = false;
+                    if (selection.isCanExtra()) {
+                        wantsExtra = promptYesOrNo(userInput, "Want extra? ");
+                    }
+                    sandwich.addComponent(new Addition(selection, wantsExtra));
+                    if (!category.isCanMany()) {
+                        cursor += 1;
+                    }
                 } else {
-                    // TODO: retry prompt
+                    System.out.println("Please enter one of the listed options.");
                 }
             } catch (NumberFormatException e) {
                 if (choice.equalsIgnoreCase("b")) {
-                    cursor -= 1;
                     // TODO: remove elements of the additions list which have already been added?
+                    cursor -= 1;
+                } else if (choice.equalsIgnoreCase("d") && category.isCanMany()) {
+                    cursor += 1;
                 } else {
                     System.out.println("Please enter one of the listed options.");
-                    // TODO: retry prompt
                 }
             }
         }

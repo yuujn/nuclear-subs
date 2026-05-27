@@ -7,20 +7,22 @@ public class MenuAddition {
     private double[] pricePerSizeClass;
     private double[] extraPricePerSizeClass;
     private boolean premium;
+    private boolean canExtra;
     double computePrice(Size size, boolean wantsExtra) {
         double total = pricePerSizeClass[size.getId()];
-        if (wantsExtra) {
+        if (wantsExtra && extraPricePerSizeClass != null) {
             total += extraPricePerSizeClass[size.getId()];
         }
         return total;
     }
 
-    public MenuAddition(String name, MenuAdditionCategory category, double[] pricePerSizeClass, double[] extraPricePerSizeClass, boolean premium) {
+    public MenuAddition(String name, MenuAdditionCategory category, double[] pricePerSizeClass, double[] extraPricePerSizeClass, boolean premium, boolean canExtra) {
         this.name = name;
         this.category = category;
         this.pricePerSizeClass = pricePerSizeClass;
         this.extraPricePerSizeClass = extraPricePerSizeClass;
         this.premium = premium;
+        this.canExtra = canExtra;
     }
 
     public String getName() {
@@ -61,5 +63,13 @@ public class MenuAddition {
 
     public void setPremium(boolean premium) {
         this.premium = premium;
+    }
+
+    public boolean isCanExtra() {
+        return canExtra;
+    }
+
+    public void setCanExtra(boolean canExtra) {
+        this.canExtra = canExtra;
     }
 }

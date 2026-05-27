@@ -76,7 +76,8 @@ public class SandwichDataReader {
                     menuCategory,
                     fileCategory.getPricesBySize(),
                     fileCategory.getExtraPricesBySize(),
-                    premium
+                    premium,
+                    fileCategory.isCanExtra()
             );
             data.additions.add(menuAddition);
 

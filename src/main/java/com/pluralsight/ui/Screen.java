@@ -38,6 +38,18 @@ public interface Screen {
         }
     }
 
+    default boolean promptYesOrNo(Scanner userInput, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String choice = userInput.nextLine();
+            switch (choice.toLowerCase()) {
+                case "y", "yes" -> { return true; }
+                case "n", "no" -> { return false; }
+                default -> System.out.println("Please enter a yes or no (y/yes/n/no).");
+            }
+        }
+    }
+
     default void waitForEnter(Scanner userInput, String notice) {
         System.out.println(notice);
         String ignored = userInput.nextLine();

@@ -33,6 +33,7 @@ public class Order {
 
         for (LineItem item : getItems()) {
             // TODO: show size
+            // TODO: show whether extra was selected
             buf.append(String.format("%s    .......    $%.2f", titleCase(item.getName()), item.getPrice()));
             if (item instanceof Sandwich sandwich) {
                 Addition[] components = sandwich.getCategories().stream()
