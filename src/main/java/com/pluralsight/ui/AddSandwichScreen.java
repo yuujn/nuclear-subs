@@ -171,7 +171,6 @@ public class AddSandwichScreen implements Screen {
                 }
             } catch (NumberFormatException e) {
                 if (choice.equalsIgnoreCase("b")) {
-                    // TODO: remove elements of the additions list which have already been added?
                     cursor -= 1;
                 } else if (choice.equalsIgnoreCase("d") && category.isCanMany()) {
                     cursor += 1;
