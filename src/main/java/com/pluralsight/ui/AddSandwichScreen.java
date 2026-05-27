@@ -68,8 +68,6 @@ public class AddSandwichScreen implements Screen {
                     boolean toasted = promptYesOrNo(userInput, "Want it toasted? ");
                     sandwich.setToasted(toasted);
                 } else if (step == 1) {
-                    // TODO: show sandwich summary, ask for confirmation,
-                    //       show Go back for specific steps
                     reachedConfirmation = true;
                     System.out.println(sandwich.generateSummary());
                     System.out.println();
