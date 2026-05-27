@@ -1,6 +1,6 @@
 package com.pluralsight.model;
 
-public class Drink {
+public class Drink implements LineItem {
     private String size;
     private String flavor;
 
@@ -23,5 +23,20 @@ public class Drink {
 
     public void setFlavor(String flavor) {
         this.flavor = flavor;
+    }
+
+    @Override
+    public String getName() {
+        return flavor;
+    }
+
+    @Override
+    public double getPrice() {
+        return switch (size.toLowerCase()) {
+            case "small" -> 2.00;
+            case "medium" -> 2.50;
+            case "large" -> 3.00;
+            default -> throw new IllegalStateException("Unexpected value: " + size.toLowerCase());
+        };
     }
 }
