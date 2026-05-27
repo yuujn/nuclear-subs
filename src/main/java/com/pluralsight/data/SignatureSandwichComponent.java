@@ -1,7 +1,5 @@
 package com.pluralsight.data;
 
-import com.pluralsight.model.Sandwich;
-
 public class SignatureSandwichComponent {
     private int id;
     private int signatureSandwichId;

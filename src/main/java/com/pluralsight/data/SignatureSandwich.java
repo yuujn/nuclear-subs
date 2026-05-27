@@ -9,7 +9,7 @@ import java.util.List;
 public class SignatureSandwich {
     private int id;
     private int sizeId;
-    private Sandwich sandwich;
+    private final Sandwich sandwich;
 
     private SignatureSandwich() {
         this.sandwich = new Sandwich();
@@ -39,6 +39,7 @@ public class SignatureSandwich {
         sandwich.setName(name);
     }
 
+    @SuppressWarnings("unused")
     public int getSizeId() {
         return sizeId;
     }
@@ -47,6 +48,7 @@ public class SignatureSandwich {
         this.sizeId = sizeId;
     }
 
+    @SuppressWarnings("unused")
     public boolean isToasted() {
         return sandwich.isToasted();
     }
