@@ -1,6 +1,7 @@
 package com.pluralsight.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.pluralsight.ui.StringUtil.titleCase;
@@ -33,7 +34,6 @@ public class Order {
 
         for (LineItem item : getItems()) {
             // TODO: show size
-            // TODO: show whether extra was selected
             buf.append(String.format("%s    .......    $%.2f", titleCase(item.getName()), item.getPrice()));
             if (item instanceof Sandwich sandwich) {
                 Addition[] components = sandwich.getCategories().stream()
@@ -42,8 +42,9 @@ public class Order {
                 for (Addition component : components) {
                     buf.append("\n");
                     buf.append(String.format(
-                            "   %s ...    $%.2f",
+                            "   %s%s ...    $%.2f",
                             titleCase(component.getMenuAddition().getName()),
+                            component.isWantsExtra() ? " (EX)":"",
                             component.computePrice(sandwich.getSize())
                     ));
                 }
