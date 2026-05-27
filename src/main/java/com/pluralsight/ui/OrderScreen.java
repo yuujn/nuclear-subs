@@ -18,7 +18,7 @@ public class OrderScreen implements Screen {
     @Override
     public Screen run(Scanner scan) {
         while (true) {
-            System.out.println(order.generateReceipt());
+            System.out.println(order.generateSummary());
             displayMenu();
             String choice = promptLine(scan, "Choose: ");
             switch (choice) {
