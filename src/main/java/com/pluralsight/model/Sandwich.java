@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Sandwich implements LineItem {
-    private int size;
+    private Size size;
     private List<AdditionCategory> categories;
     private boolean toasted;
     private String name;
@@ -33,11 +33,11 @@ public class Sandwich implements LineItem {
                 '}';
     }
 
-    public int getSize() {
+    public Size getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 

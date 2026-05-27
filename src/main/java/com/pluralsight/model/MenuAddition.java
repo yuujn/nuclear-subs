@@ -7,10 +7,10 @@ public class MenuAddition {
     private double[] pricePerSizeClass;
     private double[] extraPricePerSizeClass;
     private boolean premium;
-    double computePrice(int size, boolean wantsExtra) {
-        double total = pricePerSizeClass[size];
+    double computePrice(Size size, boolean wantsExtra) {
+        double total = pricePerSizeClass[size.getId()];
         if (wantsExtra) {
-            total += extraPricePerSizeClass[size];
+            total += extraPricePerSizeClass[size.getId()];
         }
         return total;
     }

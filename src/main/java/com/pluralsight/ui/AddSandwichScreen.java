@@ -19,13 +19,6 @@ public class AddSandwichScreen implements Screen {
     public Screen run(Scanner userInput) {
         Sandwich sandwich = new Sandwich();
 
-        // TODO: since we need to do retries with this and handle Go back with it,
-        //       there isn't any reason not to put it in the loop below
-        List<Size> sizes = App.data.getSizes();
-        displaySizes();
-        System.out.println("0) Cancel sandwich");
-        int sizeChoice = promptInt(userInput, "Choose: ");
-
         // UI Steps:
         // 1     : Size
         // 2..N  : Category[N - 1]
@@ -44,9 +37,29 @@ public class AddSandwichScreen implements Screen {
         // This cursor determines which category we're looking at adding
         // components from.
         int cursor = 0;
+        final int preCategoryWalkSteps = 1;
         List<MenuAdditionCategory> categories = App.data.getCategories();
-        while (cursor < categories.size()) {
-            MenuAdditionCategory category = categories.get(cursor);
+        while (cursor < categories.size() + preCategoryWalkSteps) {
+
+            if (cursor == 0) {
+                List<Size> sizes = App.data.getSizes();
+                displaySizes();
+                System.out.println("0) Cancel sandwich");
+                int sizeChoice = promptInt(userInput, "Choose: ");
+                if (sizeChoice < 0 || sizeChoice > sizes.size()) {
+                    continue;
+                }
+                if (sizeChoice == 0) {
+                    return new OrderScreen(order);
+                }
+                sandwich.setSize(sizes.get(sizeChoice - 1));
+
+                cursor += 1;
+                continue;
+            }
+
+            int categoryIdx = cursor - preCategoryWalkSteps;
+            MenuAdditionCategory category = categories.get(categoryIdx);
             displayCategory(category);
 
             if (cursor > 0) {
