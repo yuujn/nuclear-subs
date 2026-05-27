@@ -106,7 +106,7 @@ public class AddSandwichScreen implements Screen {
                     // Cancel the current sandwich, without adding it to the order.
                     return new OrderScreen(order);
                 } else if (n > 0 && n < category.getAdditions().size()) {
-                    MenuAddition selection = category.getAdditions().get(n);
+                    MenuAddition selection = category.getAdditions().get(n - 1);
                     boolean wantsExtra = false;
                     if (selection.isCanExtra()) {
                         wantsExtra = promptYesOrNo(userInput, "Want extra? ");
