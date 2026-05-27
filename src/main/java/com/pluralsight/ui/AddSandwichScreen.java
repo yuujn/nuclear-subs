@@ -40,7 +40,10 @@ public class AddSandwichScreen implements Screen {
         final int preCategoryWalkSteps = 1;
         final int postCategoryWalkSteps = 2;
         List<MenuAdditionCategory> categories = App.data.getCategories();
-        while (cursor < categories.size() + preCategoryWalkSteps + postCategoryWalkSteps) {
+        final int totalSteps = preCategoryWalkSteps + categories.size() + postCategoryWalkSteps;
+        final int confirmationStep = totalSteps - 1;
+        boolean reachedConfirmation = false;
+        while (cursor < totalSteps) {
 
             if (cursor == 0) {
                 List<Size> sizes = App.data.getSizes();
@@ -67,6 +70,50 @@ public class AddSandwichScreen implements Screen {
                 } else if (step == 1) {
                     // TODO: show sandwich summary, ask for confirmation,
                     //       show Go back for specific steps
+                    reachedConfirmation = true;
+                    System.out.println("TODO: Sandwich Info");
+                    System.out.println("D) Done");
+                    System.out.println("1) Pick Size");
+                    for (int i = 0; i < categories.size(); i++) {
+                        System.out.printf("%d) %s%n", i + 2, titleCase(categories.get(i).getName()));
+                    }
+                    System.out.printf("%d) Select Toasting%n", categories.size() + 2);
+                    System.out.println("0) Cancel Sandwich");
+                    boolean isConfirmed = false;
+                    boolean confirmLoop = true;
+                    while (confirmLoop) {
+                        String choice = promptLine(userInput, "Choose: ");
+                        if (choice.equalsIgnoreCase("d")) {
+                            System.out.println("Adding sandwich to order.");
+                            isConfirmed = true;
+                            confirmLoop = false;
+                        } else {
+                            try {
+                                int choiceIdx = Integer.parseInt(choice);
+                                switch (choiceIdx) {
+                                    case 0 -> {
+                                        return new OrderScreen(order);
+                                    }
+                                    case 1 -> {
+                                        cursor = 0;
+                                        confirmLoop = false;
+                                    }
+                                    default -> {
+                                        int catIdx = choiceIdx - 2;
+                                        if (catIdx <= categories.size()) {
+                                            cursor = preCategoryWalkSteps + catIdx;
+                                            confirmLoop = false;
+                                        } else {
+                                            System.out.println("Please enter one of the listed options.");
+                                        }
+                                    }
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Please enter one of the listed options.");
+                            }
+                        }
+                    }
+                    if (!isConfirmed) { continue; }
                 }
 
                 cursor += 1;
@@ -84,6 +131,11 @@ public class AddSandwichScreen implements Screen {
                 // NON-PRIORITY TODO: Add "Remove component" option
 //                System.out.printf("r) Remove c");
                 System.out.printf("d) Done adding from %s%n", titleCase(category.getName()));
+            }
+            // If each step has already been visited, we offer the user the option
+            // to go straight back to the confirmation step.
+            if (reachedConfirmation) {
+                System.out.println("f) Finish Sandwich");
             }
             System.out.println("0) Cancel Sandwich");
 
@@ -124,6 +176,8 @@ public class AddSandwichScreen implements Screen {
                     cursor -= 1;
                 } else if (choice.equalsIgnoreCase("d") && category.isCanMany()) {
                     cursor += 1;
+                } else if (choice.equalsIgnoreCase("f") && reachedConfirmation) {
+                    cursor = confirmationStep;
                 } else {
                     System.out.println("Please enter one of the listed options.");
                 }
