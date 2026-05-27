@@ -71,7 +71,8 @@ public class AddSandwichScreen implements Screen {
                     // TODO: show sandwich summary, ask for confirmation,
                     //       show Go back for specific steps
                     reachedConfirmation = true;
-                    System.out.println("TODO: Sandwich Info");
+                    System.out.println(sandwich.generateSummary());
+                    System.out.println();
                     System.out.println("D) Done");
                     System.out.println("1) Pick Size");
                     for (int i = 0; i < categories.size(); i++) {

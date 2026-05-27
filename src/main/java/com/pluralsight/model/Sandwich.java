@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.pluralsight.ui.StringUtil.titleCase;
+
 public class Sandwich implements LineItem {
     private Size size;
     private List<AdditionCategory> categories;
@@ -82,5 +84,30 @@ public class Sandwich implements LineItem {
             newCategory.getAdditions().add(addition);
             categories.add(newCategory);
         }
+    }
+
+    public String generateSummary() {
+        StringBuilder buf = new StringBuilder();
+
+        buf.append(getName());
+        buf.append(String.format("(%s)", size.getMeasurement()));
+        buf.append("\n");
+        buf.append("-".repeat(getName().length() + 2));
+        for (AdditionCategory category : getCategories()) {
+            buf.append("\n");
+            buf.append(titleCase(category.getMenuAdditionCategory().getName()));
+            for (Addition addition : category.getAdditions()) {
+                buf.append("\n");
+                buf.append(" - ");
+                buf.append(titleCase(addition.getMenuAddition().getName()));
+                if (addition.isWantsExtra()) {
+                    buf.append(" (EX)");
+                }
+                buf.append(" ... ");
+                buf.append(String.format("$%.2f", addition.computePrice(size)));
+            }
+        }
+
+        return buf.toString();
     }
 }
