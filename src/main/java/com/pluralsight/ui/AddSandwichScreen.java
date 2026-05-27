@@ -38,8 +38,9 @@ public class AddSandwichScreen implements Screen {
         // components from.
         int cursor = 0;
         final int preCategoryWalkSteps = 1;
+        final int postCategoryWalkSteps = 2;
         List<MenuAdditionCategory> categories = App.data.getCategories();
-        while (cursor < categories.size() + preCategoryWalkSteps) {
+        while (cursor < categories.size() + preCategoryWalkSteps + postCategoryWalkSteps) {
 
             if (cursor == 0) {
                 List<Size> sizes = App.data.getSizes();
@@ -53,6 +54,20 @@ public class AddSandwichScreen implements Screen {
                     return new OrderScreen(order);
                 }
                 sandwich.setSize(sizes.get(sizeChoice - 1));
+
+                cursor += 1;
+                continue;
+            }
+
+            if (cursor >= preCategoryWalkSteps + categories.size()) {
+                int step = cursor - (preCategoryWalkSteps + categories.size());
+                if (step == 0) {
+                    boolean toasted = promptYesOrNo(userInput, "Want it toasted? ");
+                    sandwich.setToasted(toasted);
+                } else if (step == 1) {
+                    // TODO: show sandwich summary, ask for confirmation,
+                    //       show Go back for specific steps
+                }
 
                 cursor += 1;
                 continue;
