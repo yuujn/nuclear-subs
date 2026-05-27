@@ -33,8 +33,7 @@ public class Order {
         buf.append("\n");
 
         for (LineItem item : getItems()) {
-            // TODO: show size
-            buf.append(String.format("%s    .......    $%.2f", titleCase(item.getName()), item.getPrice()));
+            buf.append(String.format("%s    .......    $%.2f", titleCase(item.getReceiptEntry()), item.getPrice()));
             if (item instanceof Sandwich sandwich) {
                 Addition[] components = sandwich.getCategories().stream()
                         .flatMap(x -> x.getAdditions().stream())

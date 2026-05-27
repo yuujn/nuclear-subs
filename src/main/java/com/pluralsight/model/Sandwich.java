@@ -18,6 +18,11 @@ public class Sandwich implements LineItem {
     }
 
     @Override
+    public String getReceiptEntry() {
+        return String.format("%s (%s)", getName(), getSize().getMeasurement());
+    }
+
+    @Override
     public double getPrice() {
         return categories.stream()
                 .flatMap(x -> x.getAdditions().stream())

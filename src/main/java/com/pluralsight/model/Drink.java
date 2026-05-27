@@ -31,6 +31,11 @@ public class Drink implements LineItem {
     }
 
     @Override
+    public String getReceiptEntry() {
+        return String.format("%s (%s)", getName(), getSize());
+    }
+
+    @Override
     public double getPrice() {
         return switch (size.toLowerCase()) {
             case "small" -> 2.00;

@@ -21,6 +21,11 @@ public class Chips implements LineItem {
     }
 
     @Override
+    public String getReceiptEntry() {
+        return type;
+    }
+
+    @Override
     public double getPrice() {
         return 1.50;
     }

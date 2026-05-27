@@ -14,7 +14,7 @@ public class StringUtil {
             }
 
             // Setup the next codepoint.
-            isFirstLetterOfWord = Character.isWhitespace(c);
+            isFirstLetterOfWord = Character.isWhitespace(c) || c == '(' || c == ')';
         }
         return buf.toString();
     }
