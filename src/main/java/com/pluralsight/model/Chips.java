@@ -1,6 +1,6 @@
 package com.pluralsight.model;
 
-public class Chips {
+public class Chips implements LineItem {
     private String type;
 
     public Chips(String type) {
@@ -13,5 +13,15 @@ public class Chips {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String getName() {
+        return type;
+    }
+
+    @Override
+    public double getPrice() {
+        return 1.50;
     }
 }
