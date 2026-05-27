@@ -95,7 +95,7 @@ public class Sandwich implements LineItem {
         StringBuilder buf = new StringBuilder();
 
         buf.append(getName());
-        buf.append(String.format("(%s)", size.getMeasurement()));
+        buf.append(String.format(" (%s)", size.getMeasurement()));
         buf.append("\n");
         buf.append("-".repeat(getName().length() + 2));
         for (AdditionCategory category : getCategories()) {
