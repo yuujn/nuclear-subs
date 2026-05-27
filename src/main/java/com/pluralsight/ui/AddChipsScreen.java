@@ -12,7 +12,6 @@ public class AddChipsScreen implements Screen {
     }
     @Override
     public Screen run(Scanner userInput) {
-        System.out.println("TODO: Adding chips...");
         displayTypeMenu();
         String choice = promptLine(userInput, "Choose: ");
         if (choice.equalsIgnoreCase("0")) {
