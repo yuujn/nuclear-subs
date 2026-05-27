@@ -4,7 +4,7 @@ public class Addition {
     private MenuAddition menuAddition;
     // These fields are customer input, for the particular order.
     private boolean wantsExtra;
-    double computePrice(int size) {
+    public double computePrice(int size) {
         return menuAddition.computePrice(size, wantsExtra);
     }
 

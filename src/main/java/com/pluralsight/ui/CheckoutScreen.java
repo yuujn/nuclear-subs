@@ -1,7 +1,10 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.App;
 import com.pluralsight.model.Order;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class CheckoutScreen implements Screen {
@@ -18,8 +21,14 @@ public class CheckoutScreen implements Screen {
             String choice = promptLine(userInput, "Choose: ");
             switch (choice) {
                 case "1" -> {
-                    // TODO: save receipt file
-                    return new HomeScreen();
+                    try {
+                        App.receiptWriter.writeOrder(LocalDateTime.now(), order);
+                        return new HomeScreen();
+                    } catch (IOException e) {
+                        System.out.println("Failed to write receipt.");
+                        System.out.println("Error: " + e.toString());
+                        System.out.println("Returning to prompt. You may attempt to resolve the issue before trying again.");
+                    }
                 }
                 case "0" -> { return new OrderScreen(order); }
             }
@@ -28,7 +37,7 @@ public class CheckoutScreen implements Screen {
 
     void displayReceipt() {
         System.out.println("# Receipt");
-        // TODO: display order details
+        System.out.println(order.generateReceipt());
     }
 
     void displayMenu() {

@@ -21,4 +21,32 @@ public class Order {
     public void addItem(LineItem item) {
         items.add(item);
     }
+
+    public String generateReceipt() {
+        StringBuilder buf = new StringBuilder();
+
+        // TODO: It would be nice to make this output all aligned.
+        buf.append(String.format("Total: $%.2f", calculateTotal()));
+        buf.append("\n");
+
+        for (LineItem item : getItems()) {
+            buf.append(String.format("%s    .......    $%.2f", item.getName(), item.getPrice()));
+            if (item instanceof Sandwich sandwich) {
+                Addition[] components = sandwich.getCategories().stream()
+                        .flatMap(x -> x.getAdditions().stream())
+                        .toArray(Addition[]::new);
+                for (Addition component : components) {
+                    buf.append("\n");
+                    buf.append(String.format(
+                            "   %s ...    $%.2f",
+                            component.getMenuAddition().getName(),
+                            component.computePrice(sandwich.getSize())
+                    ));
+                }
+                buf.append("\n");
+            }
+        }
+
+        return buf.toString();
+    }
 }

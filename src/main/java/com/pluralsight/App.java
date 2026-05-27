@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import com.pluralsight.data.ReceiptWriter;
 import com.pluralsight.data.SandwichDataReader;
 import com.pluralsight.ui.UserInterface;
 
@@ -13,6 +14,7 @@ public class App {
     //
     // Placing it in a static is no worse.
     public static SandwichDataReader data;
+    public static ReceiptWriter receiptWriter;
     public static void main(String[] args) {
         try {
             data = SandwichDataReader.readCSVFiles("data/sandwich");
@@ -20,6 +22,7 @@ public class App {
             System.out.println("Failed to load sandwich menu data.");
             throw new RuntimeException(e);
         }
+        receiptWriter = new ReceiptWriter("receipts");
         UserInterface ui = new UserInterface(new Scanner(System.in));
         ui.run();
     }

@@ -58,7 +58,11 @@ public class Sandwich implements LineItem {
     }
 
     public String getName() {
-        return name;
+        if (name != null) {
+            return name;
+        } else {
+            return "Sandwich";
+        }
     }
 
     public void setName(String name) {
