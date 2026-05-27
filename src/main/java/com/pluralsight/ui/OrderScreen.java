@@ -23,9 +23,10 @@ public class OrderScreen implements Screen {
             String choice = promptLine(scan, "Choose: ");
             switch (choice) {
                 case "1" -> { return new AddSandwichScreen(order); }
-                case "2" -> { return new AddDrinkScreen(order); }
-                case "3" -> { return new AddChipsScreen(order); }
-                case "4" -> { return new CheckoutScreen(order); }
+                case "2" -> { return new AddSignatureSandwichScreen(order); }
+                case "3" -> { return new AddDrinkScreen(order); }
+                case "4" -> { return new AddChipsScreen(order); }
+                case "5" -> { return new CheckoutScreen(order); }
                 case "0" -> { return new HomeScreen(); }
                 default -> {}
             }
@@ -33,10 +34,11 @@ public class OrderScreen implements Screen {
     }
     void displayMenu() {
         System.out.println("1) Add Sandwich");
-        System.out.println("2) Add Drink");
-        System.out.println("3) Add Chips");
+        System.out.println("2) Add Signature Sandwich");
+        System.out.println("3) Add Drink");
+        System.out.println("4) Add Chips");
         if (CheckoutScreen.isAvailable(order)) {
-            System.out.println("4) Checkout");
+            System.out.println("5) Checkout");
         }
         System.out.println("0) Cancel Order");
     }

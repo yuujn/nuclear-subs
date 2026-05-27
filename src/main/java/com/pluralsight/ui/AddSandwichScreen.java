@@ -10,14 +10,19 @@ import static com.pluralsight.ui.StringUtil.titleCase;
 
 public class AddSandwichScreen implements Screen {
     private final Order order;
+    private Sandwich sandwich;
 
     public AddSandwichScreen(Order order) {
         this.order = order;
     }
+    public AddSandwichScreen(Order order, Sandwich sandwich) {
+        this.order = order;
+        this.sandwich = sandwich;
+    }
 
     @Override
     public Screen run(Scanner userInput) {
-        Sandwich sandwich = new Sandwich();
+        Sandwich sandwich;
 
         // UI Steps:
         // 1     : Size
@@ -43,6 +48,14 @@ public class AddSandwichScreen implements Screen {
         final int totalSteps = preCategoryWalkSteps + categories.size() + postCategoryWalkSteps;
         final int confirmationStep = totalSteps - 1;
         boolean reachedConfirmation = false;
+
+        if (this.sandwich != null) {
+            sandwich = this.sandwich;
+            cursor = confirmationStep;
+        } else {
+            sandwich = new Sandwich();
+        }
+
         while (cursor < totalSteps) {
 
             if (cursor == 0) {

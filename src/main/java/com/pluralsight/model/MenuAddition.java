@@ -2,6 +2,7 @@ package com.pluralsight.model;
 
 public class MenuAddition {
     // These fields are from our data about menu items.
+    private int id;
     private String name;
     private MenuAdditionCategory category;
     private double[] pricePerSizeClass;
@@ -16,13 +17,22 @@ public class MenuAddition {
         return total;
     }
 
-    public MenuAddition(String name, MenuAdditionCategory category, double[] pricePerSizeClass, double[] extraPricePerSizeClass, boolean premium, boolean canExtra) {
+    public MenuAddition(int id, String name, MenuAdditionCategory category, double[] pricePerSizeClass, double[] extraPricePerSizeClass, boolean premium, boolean canExtra) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.pricePerSizeClass = pricePerSizeClass;
         this.extraPricePerSizeClass = extraPricePerSizeClass;
         this.premium = premium;
         this.canExtra = canExtra;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
