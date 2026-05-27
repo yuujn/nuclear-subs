@@ -46,8 +46,8 @@ public class Order {
                             component.computePrice(sandwich.getSize())
                     ));
                 }
-                buf.append("\n");
             }
+            buf.append("\n");
         }
 
         return buf.toString();
