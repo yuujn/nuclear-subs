@@ -14,6 +14,10 @@ public class CheckoutScreen implements Screen {
     }
     @Override
     public Screen run(Scanner userInput) {
+        if (order.calculateTotal() == 0) {
+            System.out.println("Cannot checkout without purchasing anything.");
+            return new OrderScreen(order);
+        }
         displayReceipt();
         waitForEnter(userInput, "Press Enter to continue...");
         displayMenu();
