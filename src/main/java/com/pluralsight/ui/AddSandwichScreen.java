@@ -11,6 +11,7 @@ import static com.pluralsight.ui.StringUtil.titleCase;
 public class AddSandwichScreen implements Screen {
     private final Order order;
     private Sandwich sandwich;
+    private boolean sandwichAlreadyExists;
 
     public AddSandwichScreen(Order order) {
         this.order = order;
@@ -18,6 +19,11 @@ public class AddSandwichScreen implements Screen {
     public AddSandwichScreen(Order order, Sandwich sandwich) {
         this.order = order;
         this.sandwich = sandwich;
+    }
+    public static Screen editSandwich(Order order, Sandwich sandwich) {
+        AddSandwichScreen screen = new AddSandwichScreen(order, sandwich);
+        screen.sandwichAlreadyExists = true;
+        return screen;
     }
 
     @Override
@@ -195,7 +201,9 @@ public class AddSandwichScreen implements Screen {
             }
         }
 
-        order.addItem(sandwich);
+        if (!sandwichAlreadyExists) {
+            order.addItem(sandwich);
+        }
         return new OrderScreen(order);
     }
 

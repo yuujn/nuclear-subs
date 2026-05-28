@@ -27,6 +27,7 @@ public class OrderScreen implements Screen {
                 case "3" -> { return new AddDrinkScreen(order); }
                 case "4" -> { return new AddChipsScreen(order); }
                 case "5" -> { return new CheckoutScreen(order); }
+                case "6" -> { return new EditSandwichScreen(order); }
                 case "0" -> { return new HomeScreen(); }
                 default -> {}
             }
@@ -39,6 +40,9 @@ public class OrderScreen implements Screen {
         System.out.println("4) Add Chips");
         if (CheckoutScreen.isAvailable(order)) {
             System.out.println("5) Checkout");
+        }
+        if (EditSandwichScreen.isAvailable(order)) {
+            System.out.println("6) Edit Sandwich");
         }
         System.out.println("0) Cancel Order");
     }

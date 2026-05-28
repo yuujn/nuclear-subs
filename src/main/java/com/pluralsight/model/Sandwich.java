@@ -128,4 +128,29 @@ public class Sandwich implements LineItem {
 
         return buf.toString();
     }
+
+    public String generateOneLiner() {
+        StringBuilder buf = new StringBuilder();
+
+        if (name != null) {
+            buf.append(name);
+            buf.append(" - ");
+        }
+
+        List<Addition> additions = getCategories().stream()
+                .flatMap(x -> x.getAdditions().stream())
+                .toList();
+        for (int i = 0; i < additions.size(); i++) {
+            if (i > 0) {
+                buf.append(", ");
+            }
+            Addition addition = additions.get(i);
+            buf.append(addition.getMenuAddition().getName());
+            if (addition.isWantsExtra()) {
+                buf.append(" (EX)");
+            }
+        }
+
+        return buf.toString();
+    }
 }
