@@ -1,5 +1,7 @@
 package com.pluralsight.model;
 
+import static com.pluralsight.ui.StringUtil.titleCase;
+
 public class Drink implements LineItem {
     private String size;
     private String flavor;
@@ -45,5 +47,10 @@ public class Drink implements LineItem {
             case "large" -> 3.00;
             default -> throw new IllegalStateException("Unexpected value: " + size.toLowerCase());
         };
+    }
+
+    @Override
+    public String generateOneLiner() {
+        return titleCase(getReceiptEntry());
     }
 }

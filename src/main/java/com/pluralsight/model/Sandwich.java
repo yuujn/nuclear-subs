@@ -129,6 +129,7 @@ public class Sandwich implements LineItem {
         return buf.toString();
     }
 
+    @Override
     public String generateOneLiner() {
         StringBuilder buf = new StringBuilder();
 

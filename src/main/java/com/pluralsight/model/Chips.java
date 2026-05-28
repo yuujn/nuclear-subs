@@ -31,4 +31,9 @@ public class Chips implements LineItem {
     public double getPrice() {
         return 1.50;
     }
+
+    @Override
+    public String generateOneLiner() {
+        return type;
+    }
 }
