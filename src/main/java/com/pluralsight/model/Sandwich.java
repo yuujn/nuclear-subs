@@ -83,7 +83,20 @@ public class Sandwich implements LineItem {
                 .findFirst();
 
         if (category.isPresent()) {
-            category.get().getAdditions().add(addition);
+            // If the target category cannot have >1 members,
+            // remove existing member and insert the new thing.
+
+            // Component uniqueness:
+            // If an instance of the new menu item is already present, remove it,
+            // and insert the new thing.
+            AdditionCategory cat = category.get();
+            if (!target.isCanMany()) {
+                cat.getAdditions().removeIf(ignored -> true);
+                cat.getAdditions().add(addition);
+            } else {
+                cat.getAdditions().removeIf(x -> x.getMenuAddition() == addition.getMenuAddition());
+                cat.getAdditions().add(addition);
+            }
         } else {
             AdditionCategory newCategory = new AdditionCategory(target);
             newCategory.getAdditions().add(addition);
